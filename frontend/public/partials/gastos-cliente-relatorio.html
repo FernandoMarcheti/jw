@@ -1,0 +1,61 @@
+<div ng-controller="GastosClienteRelatorioController as vm">
+	<h1>Gastos por Cliente</h1>
+
+	<form name="clienteRelatorioForm" novalidate>
+
+		<div class="row">
+
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker"  >
+					<label for="gastos-cliente-data-inicio">(*)Data Início</label>
+					<div class="input-group">
+					    <input  class="form-control" 
+						type="text" name="dataInicio" id="gastos-cliente-data-inicio" placeholder="Data Início" ng-model="vm.dataInicio" ui-date-mask required>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker"  >
+					<label for="gastos-cliente-data-fim">(*)Data Fim</label>
+					<div class="input-group">
+					    <input  class="form-control" 
+						type="text" name="dataFim" id="gastos-cliente-data-fim" placeholder="Data Fim" ng-model="vm.dataFim" ui-date-mask required
+						>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+		</div>
+
+		<br>
+
+		<button type="button" class="btn bnt-padrao" ng-click="vm.pesquisar()">Pesquisar</button>
+		<button type="button" class="btn bnt-padrao" ng-click="vm.gerarRelatorio()"
+		ng-disabled="!vm.habilitarBotaoGerar">Imprimir</button>
+
+	</form>
+	
+	<br>
+
+	<div ng-if="vm.gcr.gastos.length">
+		<table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" show-filter="true">				
+		    <tr ng-repeat="lancamentos in $data">
+		    	<td width="10%" title="'Código'" sortable="'cliente.codigo'">
+		            {{lancamentos.cliente.codigo}}</td>
+		    	<td width="70%" title="'Cliente'" sortable="'cliente.razaoSocial'">{{lancamentos.cliente.razaoSocial}}</td>
+	            <td width="20%" title="'Vl.Total'" sortable="'subTotal'">{{lancamentos.subTotal | currency}}</td>
+		    </tr>
+		</table>
+	</div>
+	
+	<!-- Relatório -->
+	<div id="divRelatorio" style="display:none;" ng-include="'/partials/gastos-cliente-relatorio-impressao.html'" ng-show="vm.habilitarBotaoGerar" style="margin-top: 100px;">
+
+</div>

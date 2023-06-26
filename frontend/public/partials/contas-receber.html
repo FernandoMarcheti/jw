@@ -1,0 +1,44 @@
+<div ng-controller="ContasAReceberController as vm">
+	<h1>Contas à Receber</h1>
+
+	<div  ng-include="'../partials/confirmar-baixa-modal.html'">
+	</div>
+
+	<div class="row">
+		<div class="col-md-3">
+			<div class="form-group">
+				<label for="contas-receber-total">Total à Receber</label>
+				<input ng-model="vm.totalReceber" class="form-control " 
+				type="text" name="totalReceber" id="contas-receber-total" placeholder="Total à Receber" required>
+			</div>
+		</div>
+	</div>
+
+	<br>
+
+	<input ng-model="vm.filtrarNumero" class="form-control" ng-change="vm.filtrarCliente(vm.filtrarNumero)"
+				type="number" name="filtrarNumero" id="contas-filtrar-numero" placeholder="Filtrar por Número">
+	<table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" show-filter="true">
+	    <tr ng-repeat="conta in $data">
+	        <td width="10%" title="'Nº Documento'" filter="{ 'numeroFechamento': 'number'}" sortable="'numeroFechamento'">
+	            {{conta.numeroFechamento}}</td>
+	        <td width="40%" title="'Cliente'" filter="{ 'cliente': 'text'}" sortable="'cliente'">
+	            {{conta.cliente}}</td>
+            <td width="10%" title="'Vencimento'" filter="{ 'dataVencimento': 'text'}" sortable="'dataVencimento'">
+	            {{conta.dataVencimento | date:'dd/MM/yyyy'}}</td>
+            <td width="10%" title="'Mensalidade'" filter="{ 'mensalidade': 'text'}" sortable="'mensalidade'">{{conta.mensalidade}}</td>
+            <td width="10%" title="'Produtos'" filter="{ 'valorLancamento': 'text'}" sortable="'valorLancamento'">{{conta.valorLancamento}}</td>
+            <td width="12%" title="'Valor'" filter="{ 'valorTotal': 'text'}" sortable="'valorTotal'">{{conta.valorTotal}}</td>
+
+	        <td width="8%" title="'Ações'">
+	        	<button class="btn btn-default btn-sm" title="Baixar Título" data-toggle="modal"  data-target="#confirmar-baixa-modal" ng-click="vm.baixar(conta)"><span class="glyphicon glyphicon-save"></span></button>
+          	
+          		<button class="btn bnt-padrao btn-sm" title="Carta Cobrança" ng-click="vm.gerarCartaCobranca(conta)"><span class="glyphicon glyphicon-envelope"></span></button>
+          	</td>
+	    </tr>
+	</table>
+
+	<!-- gerar carta de cobrança -->
+	<div id="divRelatorio" style="display:none;" ng-include="'/partials/carta-cobranca.html'"></div>
+
+</div>

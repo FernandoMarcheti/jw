@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+        <title></title>
+
+        <style type="text/css">
+            @media print {
+                body {
+                    font-family: Arial;
+                    font-size: 14px;
+                    padding: 30px;
+                    text-align: justify;
+                
+                }
+
+                .carta{
+                    padding: 12px 30px;
+                    border: 1px solid black;
+                    text-align: center;
+                    width: auto;
+                    margin: 0 auto;
+                }
+
+                .logotipo{
+                    width: 26%;
+                }
+
+                .t50 {
+                    text-indent: 50px;
+                }
+
+                .p50 {
+                    margin-left: 50px;
+                }
+
+                .p65 {
+                    margin-left: 65px;
+                }
+
+                .p100 {
+                    margin-left: 100px;
+                }
+
+                .underline {
+                    text-decoration: underline;
+                }
+                .titulo{
+                    font-size: 18px;
+                    margin-bottom: 30px;
+                }
+                .subtitulo{
+                    font-size: 15px;
+                    margin: 0;
+                }
+                .negrito {
+                    font-weight: bold;
+                }
+                .no-mb {
+                    margin-bottom: 0;
+                }
+                .no-mt {
+                    margin-top: 0;
+                }
+                .mr {
+                    margin-right: 20%;
+                }
+                .mr2 {
+                    margin-right: 40%;
+                }
+                .ml {
+                    margin-left: 3%;
+                }
+                .b-top {
+                    border-top: 2px solid black;
+                    margin-top: 50px;
+                    width: 80%;
+                    padding-top: 7px;
+                }
+            }
+        </style>
+    </head>
+    <body align="justify">
+        
+        <img class="logotipo" src="../img/peco_logo.jpg" alt="Logotipo Pecorari">
+        <br /><br />
+        
+        <div class="negrito carta sublinhado">
+            <h2 class="subtitulo underline"> “INSTRUMENTO PARTICULAR DE DISTRATO DE PRESTAÇÃO DE SERVIÇOS PROFISSIONAIS CONTÁBEIS”¹ </h2>
+        </div>
+        <br /><br />
+
+        <p class="no-mb t50">            
+            CONTRATADA: <span class="negrito">PECORARE & ASSOCIADOS CONTABILIDADE S/S LTDA.</span>, com sede social na cidade de Matão, Estado de São Paulo, 
+            na Avenida Santo Antonio, 550, Centro, Cep. 15.990-110, inscrita no CNPJ/MF sob nº 00.435.991/0001-35, inscrição 
+            municipal sob n° 118.705, devidamente inscrita no CRC SP sob nº 2SP027486/O-7, neste ato representada por 
+            <span class="negrito">DEIVES RAFAEL GOMES</span>, brasileiro, solteiro, nascido em 28.12.1981, natural de Araraquara–SP, advogado, inscrito 
+            na Ordem dos Advogados do Brasil/SP sob nº 328.722, portador do CIRG sob nº 42.110.089-8 – SSP/SP e inscrito no 
+            CPF/MF sob nº 300.076.858-07, residente e domiciliado na cidade de Matão, Estado de São Paulo, na Rua Otone 
+            Correa, 1.208, Jardim Bela Vista, Cep. 15.997-022; 
+        </p>
+        <p class="t50">
+            CONTRATANTE:</span> {{vm.cliente.razaoSocial }}, {{ vm.cliente.enderecos[0].endereco.logradouro}}, 
+            {{ vm.cliente.enderecos[0].endereco.numero}}, {{ vm.cliente.enderecos[0].endereco.bairro}}, CEP 
+            {{ vm.cliente.enderecos[0].endereco.cep}}, {{ vm.cliente.enderecos[0].endereco.localidade}} - {{ vm.cliente.enderecos[0].endereco.uf}}, 
+            CNPJ/CPF {{ vm.cliente.cnpjCpf | cnpj }}.
+        </p>
+
+        <p class="no-mt t50">
+            Pelo presente instrumento particular de distrato, as partes acima, devidamente qualificadas, doravante denominadas, 
+            simplesmente, <span class="negrito">CONTRATADA</span> e <span class="negrito">CONTRATANTE</span>, na melhor forma de direito, resolvem rescindir a relação contratual existente, 
+            mediante as cláusulas e condições seguintes: 
+        </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA PRIMEIRA</h2>
+        <p class="no-mt">
+            A <span class="negrito">CONTRATADA</span> e <span class="negrito">CONTRATANTE</span> em {{ vm.cliente.inicioServicos | date: "dd 'de' MMMM 'de' yyyy" }}, firmaram 
+            “Contrato de Prestação de Serviços Contábeis”, pelo qual a primeira confiou à segunda os serviços 
+            como previsto na cláusula primeira do pacto sob distrato. 
+        </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA SEGUNDA </h2>
+        <p class="no-mt">
+            A <span class="negrito">CONTRATADA</span> e <span class="negrito">CONTRATANTE</span> decidem desistir da continuidade do contrato até agora vigente, 
+            restando acertado que, em razão dos serviços e atividades desenvolvidos até o momento, a 
+            <span class="negrito">CONTRATADA</span> entregará, mediante protocolo, todos os serviços concluídos, bem como toda a 
+            documentação da empresa/sociedade na data da assinatura do presente distrato. 
+        </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA TERCEIRA  </h2>
+        <p class="no-mt">
+            A <span class="negrito">CONTRATADA</span>, por força do instrumento ora distratado, executou seus serviços até 
+            {{ vm.cliente.fimServicos | date: "dd 'de' MMMM 'de' yyyy" }}.
+        </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA QUARTA </h2>
+        <p class="no-mt">
+            A <span class="negrito">CONTRATANTE</span> obriga-se a pagar à  <span class="negrito">CONTRATADA</span> os honorários profissionais previsto na cláusula quarta, § 1º do pacto sob distrato até a data da vigência do contrato ora rescindido. 
+        </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA QUINTA </h2>
+        <p class="no-mt">
+            A <span class="negrito">CONTRATANTE</span> outorga à <span class="negrito">CONTRATADA</span> plena, total e irrevogável quitação, para nada mais reclamar, a 
+            qualquer tempo e a que título for, em relação à avença distratada, bem como aos serviços profissionais prestados.
+        </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA SEXTA </h2>
+        <p class="no-mt">
+            A <span class="negrito">CONTRATANTE</span>, após o recebimento dos honorários previstos, outorga à <span class="negrito">CONTRATADA</span> plena, total e 
+            irrevogável quitação, para nada mais reclamar, a qualquer tempo e a que título for, em relação à avença distratada.
+        </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA SÉTIMA </h2>
+        <p class="no-mt">
+                O presente distrato é firmado em caráter irrevogável e irretratável, obrigando as partes, seus herdeiros e sucessores. 
+        </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA OITAVA </h2>
+        <p class="no-mt">
+            Os casos omissos serão resolvidos de comum acordo. 
+        </p>
+
+        <p><span class="negrito">Parágrafo único.</span> Fica eleito o Foro da cidade de Matão, Estado de São Paulo, com expressa renúncia 
+            a qualquer outro, por mais privilegiado que seja, para dirimir as questões oriundas da interpretação 
+            e execução do presente instrumento, ou DA CLÁUSULA COMPROMISSÓRIA (onde houver JUÍZO ARBITRAL). 
+            Os <span class="negrito">CONTRATANTES</span> submeterão à arbitragem eventuais litígios oriundos do presente contrato. (Lei nº 9.307-96).
+        </p>
+
+        <p>
+            E, para firmeza e como prova de assim haverem rescindido o contrato, firmam este instrumento particular, 
+            impresso em duas vias de igual teor e forma, assinado pelas partes contratantes e pelas testemunhas abaixo. 
+        </p>
+
+        <p class="p50">Matão – SP, {{ vm.cliente.fimServicos | date: "dd 'de' MMMM 'de' yyyy" }} </p>
+
+
+        <p class="no-mt no-mb b-top">CONTRATADA: <span class="negrito">PECORARE & ASSOCIADOS CONTABILIDADE S/S LTDA.</span> </p>
+        <p class="no-mt">REPRESENTANTE:<span class="negrito"> DEIVES RAFAEL GOMES</span> </p>
+
+        <p class="no-mt no-mb b-top">CONTRATANTE: {{vm.cliente.razaoSocial }}.</p>
+
+    </body>
+</html>

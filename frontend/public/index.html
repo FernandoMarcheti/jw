@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html ng-app="sce" lang="pt=BR">
+	<head>
+		<title></title>
+		<base href="/">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="../node_modules/ng-table/bundles/ng-table.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker/css/bootstrap-datepicker.css">
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/snack-bar.css">
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		
+	</head>
+	<body>
+
+		<header>
+			<nav class="navbar" role="navigation">
+				<div>
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					  	</button>
+					  	<a href="http://www.jwgrupo.com.br" class="site_title" target="_blank">
+	                        <img src="img/jw.png" alt="Logotipo JW Grupo">
+	                    </a>
+					</div>
+
+					<ul class="nav navbar-nav active">
+						<li><a href="/home">Home</a></li>
+					</ul>
+
+					<ul onclick="arrowRotate(this)" class="nav navbar-nav" data-toggle="collapse" href="#menu-cadastro">
+
+						<li class="active">
+							<a>Cadastro
+								<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-menu-up up"></span>
+							</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav collapse sub-menu" id="menu-cadastro">
+						<li><a href="#/cliente">Cliente</a></li>
+						<li><a href="#/produto">Produto</a></li>
+						<li><a href="#/empresa">Empresa</a></li>
+						<li><a href="#/conta-bancaria">Conta Bancária</a></li>
+						<li><a href="#/notificacao">Notificação</a></li>
+					</ul>
+
+
+					<ul onclick="arrowRotate(this)" class="nav navbar-nav" data-toggle="collapse" href="#menu-financeiro">
+
+						<li class="active">
+							<a>Financeiro
+								<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-menu-up up"></span>
+							</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav collapse sub-menu" id="menu-financeiro">
+						<li><a href="#/lancamento">Lançamento</a></li>
+						<li><a href="#/fechamento">Fechamento Mensal</a></li>
+						<li><a href="#/contas-receber">Contas à Receber</a></li>
+						<li><a href="#/recibo-pagamento">Recibo de Pagamento</a></li>
+					</ul>
+
+					<ul onclick="arrowRotate(this)" class="nav navbar-nav" data-toggle="collapse" href="#menu-relatorio">
+
+						<li class="active">
+							<a>Relatórios
+								<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-menu-up up"></span>
+							</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav collapse sub-menu" id="menu-relatorio">
+						<li><a href="#/relatorio/titulos/aberto">Títulos em Aberto</a></li>
+						<li><a href="#/relatorio/valores/produto">Gastos por Produtos</a></li>
+						<li><a href="#/relatorio/gastos/cliente">Gastos por Clientes</a></li>
+					</ul>
+
+
+				</div>
+			</nav>
+		</header>
+
+		<main>
+			<div id="loading-bar" ng-if="loading">
+				<i class="fa fa-spinner fa-spin spinner" style="font-size:48px"></i>
+			</div>
+			<section class="container">		
+				<div id="snackbar"></div>	
+				<ng-view></ng-view>
+			</section>
+		</main>	
+		
+		
+		<script src="../node_modules/angular/angular.js"></script>
+		<script type="text/javascript" src="../node_modules/angular-route/angular-route.min.js"></script>
+		<script src="../node_modules/angular-resource/angular-resource.min.js"></script>
+		<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../node_modules/ng-table/bundles/ng-table.min.js">
+		</script>
+		
+		<script src="../node_modules/angular-input-masks/releases/angular-input-masks-standalone.min.js">
+		</script>
+		<script src="../node_modules/angular-i18n/angular-locale_pt-br.js"></script>
+
+		
+		<script src="css/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script src="css/bootstrap-datepicker/js/bootstrap-datepicker.pt-BR.min.js"></script>
+		
+
+		<script type="text/javascript" src="js/app.js"></script>
+
+		<script type="text/javascript" src="js/nav-annimation-fix.js"></script>
+
+		<script type="text/javascript" src="js/interceptor/loading-interceptor.js"></script>
+
+		<script type="text/javascript" src="js/directives/cep-directive.js"></script>
+		<script type="text/javascript" src="js/filters/valor-extenso-filter.js"></script>
+		<script type="text/javascript" src="js/filters/cnpj-filter.js"></script>
+
+		<script type="text/javascript" src="js/controllers/produto-controller.js"></script>
+		<script type="text/javascript" src="js/controllers/cliente-controller.js"></script>
+		<script type="text/javascript" src="js/controllers/empresa-controller.js"></script>
+		<script type="text/javascript" src="js/controllers/conta-bancaria-controller.js"></script>
+		<script type="text/javascript" src="js/controllers/notificacao-controller.js"></script>
+		<script type="text/javascript" src="js/controllers/lancamento-controller.js"></script>
+		<script type="text/javascript" src="js/controllers/contas-receber-controller.js"></script>
+		<script type="text/javascript" src="js/controllers/recibo-pagamento-controller.js"></script>
+		<script type="text/javascript" src="js/controllers/fechamento-controller.js"></script>
+		<script type="text/javascript" src="js/controllers/contas-receber-relatorio-controller.js"></script>
+		<script type="text/javascript" src="js/controllers/valores-produto-relatorio-controller.js"></script>
+		<script type="text/javascript" src="js/controllers/gastos-cliente-relatorio-cotroller.js"></script>
+		
+
+		<script type="text/javascript" src="js/services/snack-bar-service.js"></script>
+		<script type="text/javascript" src="js/services/produto-service.js"></script>
+		<script type="text/javascript" src="js/services/cliente-service.js"></script>
+		<script type="text/javascript" src="js/services/empresa-service.js"></script>
+		<script type="text/javascript" src="js/services/conta-bancaria-service.js"></script>
+		<script type="text/javascript" src="js/services/banco-service.js"></script>
+		<script type="text/javascript" src="js/services/lancamento-service.js"></script>
+		<script type="text/javascript" src="js/services/contas-receber-service.js"></script>
+		<script type="text/javascript" src="js/services/endereco-service.js"></script>
+		<script type="text/javascript" src="js/services/relatorio-service.js"></script>
+		<script type="text/javascript" src="js/services/fechamento-service.js"></script>
+		<script type="text/javascript" src="js/services/boleto-service.js"></script>
+
+
+		<script type="text/javascript" src="js/utils/prototype.js"></script>
+		<script type="text/javascript" src="js/utils/date-helper.js"></script>
+		<script type="text/javascript" src="js/utils/extenso.js"></script>
+	</body>
+
+</html>

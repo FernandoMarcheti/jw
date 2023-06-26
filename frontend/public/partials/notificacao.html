@@ -1,0 +1,63 @@
+<div ng-controller="NotificacaoController as vm">
+	<h1>Notificação</h1>
+
+	<form name="notificacaoForm" novalidate ng-submit="vm.salvar()">
+
+		<h3>Configuração de envio de E-mails de notificação</h3>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+
+					<div class="radio col-md-3">
+						<label>
+							<input type="radio" name="tipoEnvioBoleto" id="tipoEnvioEspecifico"
+								ng-model="vm.tipoEnvio" value="especifico">Enviar e-mail(s) específico(s)
+						</label>
+					</div>
+					<div class="col-md-9">
+						<div class="form-group">
+							<label for="tipoEnvioEspecifico">Enviar e-mail(s) específico(s)</label>
+							<input  autocomplete="off" ng-model="vm.email" class="form-control " 
+							type="text" id="tipoEnvioEspecificoIn" placeholder="Emails" ng-keyup="vm.complete(vm.email)" 
+							ng-blur="hide()"  />
+
+							<ul class="list-group" ng-model="vm.hide" ng-hide="vm.hide">
+								<li class="list-group-item" ng-repeat="email in vm.emails" 
+								ng-click="vm.setInput(email)">{{email}}</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<div class="radio">
+					<label>
+						<input type="radio" name="tipoEnvioBoleto" id="tipoEnvioMarcados"
+							ng-model="vm.tipoEnvio" value="marcados">Enviar para notificação de boleto 
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="empresa-emailboleto-titulo">Título do E-mail</label>
+					<input ng-model="vm.notificacao.titulo" class="form-control" 
+					type="text" placeholder="Título do E-mail">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="empresa-emailboleto-corpo">Corpo do E-mail</label>
+					<textarea  ng-model="vm.notificacao.corpo" class="form-control" 
+					type="text" rows="8" placeholder="Corpo do E-mail"></textarea>
+				</div>
+			</div>
+		</div>
+		
+		<button type="submit" class="btn bnt-padrao">Enviar</button>
+	</form>
+</div>

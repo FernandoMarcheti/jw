@@ -1,0 +1,96 @@
+version: '3'
+
+services:
+  api:
+    tty: true
+    build: ./backend
+    container_name: backend
+    entrypoint: sh -c "npm start"
+    restart: always
+    volumes:
+      - ./boletos:/boletos
+      - ./backend:/home/node/app
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - sce-network
+    ports:
+      - 9001:9001
+    depends_on:
+      - db
+
+  node-pdf:
+    tty: true
+    build: ./node-pdf
+    container_name: node-pdf
+    restart: always
+    networks:
+      - sce-network
+    ports:
+      - 3006:3000
+    depends_on:
+      - db
+
+  app:
+    tty: true
+    build: ./frontend
+    container_name: app
+    entrypoint: sh -c "npm install -y & npm start"
+    restart: always
+    volumes:
+      - ./frontend:/home/node/app
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - sce-network
+    ports:
+      - 3001:3001
+
+  boleto:
+    tty: true
+    build: ./boletocoreapi/src
+    container_name: boleto
+    restart: always
+    volumes:
+      - ./boletos:/boletos
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - sce-network
+    ports:
+      - 7000:80
+
+  db:
+    image: mongo:5.0.5
+    container_name: db
+    restart: always
+    tty: true
+    networks:
+      - sce-network
+    volumes:
+      # - ./.docker/dbdata:/data/db
+      - /etc/localtime:/etc/localtime:ro
+      - ./data/db/:/data/db
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=fernando
+      - MONGO_INITDB_ROOT_PASSWORD=fernando
+      - MONGO_INITDB_DATABASE=test
+
+  mongo-express:
+    image: mongo-express:0.54.0
+    restart: always
+    networks:
+      - sce-network
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=db
+      - ME_CONFIG_MONGODB_AUTH_USERNAME=fernando
+      - ME_CONFIG_MONGODB_AUTH_PASSWORD=fernando
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=fernando
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=fernando
+    depends_on:
+      - db
+
+networks:
+  sce-network:
+    driver: bridge

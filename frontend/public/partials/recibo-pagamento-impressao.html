@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">		
+		<title></title>
+
+		<style type="text/css">
+			@media print{
+				body{
+					font-size: 16px;
+				}
+				.logotipo{
+					width: 26%;
+				}
+				.sublinhado{
+					text-decoration: underline;
+				}
+
+				.negrito{
+					font-weight: bold;
+				}
+
+				.carta{
+					padding: 15px 80px;
+				    border: 1px solid black;
+			        text-align: center;
+		            width: 295px;
+	                margin: 0 auto;
+				}
+
+				.center{
+				    text-align: center;
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+
+		<img class="logotipo" src="../img/peco_logo.jpg" alt="Logotipo Pecorari">
+		<br /><br />
+			
+		<div class="negrito carta sublinhado">
+			<span> Recibo </span>
+		</div>
+		<br><br>
+		<div align="justify">
+			Recebi (emos) de {{vm.reciboPagamento.favorecido}}, importância de {{vm.reciboPagamento.valor | currency}} ({{vm.reciboPagamento.valor
+			| extenso}}), correspondente a {{vm.reciboPagamento.referente}}
+		</div>
+
+		<div><br><br><br></div>
+
+		<div align="justify">
+			Para maior clareza e fins de direito, firmo (amos) o presente recibo.
+		</div>
+
+		<div><br><br><br></div>
+
+		<div class="center">
+			Matão-SP, {{vm.reciboPagamento.dataEmissao | date:'dd \'de\' MMMM \'de\' yyyy'}}.
+		</div>
+
+		<div style="margin-top:150px;">
+			<div style="border-top: 1px solid black;width: 50%;margin-left: 25%;" class="text-center">
+				{{vm.empresa.razaoSocial}}
+			</div>
+		</div>
+	</body>
+</html>

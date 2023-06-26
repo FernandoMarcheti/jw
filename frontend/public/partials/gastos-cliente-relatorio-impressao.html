@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">	
+		<title></title>
+
+		<style type="text/css">
+			@media print {
+				.separador {
+			    margin-top: -25px;
+			    margin-bottom: 0;
+				padding: 0;
+			}
+
+			.semEspaco {
+			    margin: 0;
+				padding: 0;
+			}
+
+			body{
+		    	font-family: sans-serif;
+		    	font-size: 12px;
+		    	width: 100%;		    	
+			}
+
+			.fontQua {
+				font-size: 14px;
+			}
+
+			.sublinhado{
+				text-decoration: underline;
+			}
+
+			.negrito{
+				font-weight: bold;
+			}
+
+			tfoot{
+			    border-top: 1px solid black;
+			}
+
+			.carta{
+				padding: 25px 80px;
+			    border: 1px solid black;
+		        text-align: center;
+	            width: 250px;
+                margin: 0 auto;
+			}
+
+			.borda {
+			    border-top: 1px solid black;
+			}
+
+			.center{
+			    text-align: center;
+			}
+
+			.left {
+			    text-align: left;
+			}			
+
+			.data {
+			    position: absolute;
+    			left: 10%;
+			}
+
+			.desc {
+				position: absolute;
+    			left: 20%;
+			}
+
+			.qtde {
+				position: absolute;
+    			left: 60%;
+			}
+
+			.vUnit {
+				position: absolute;
+    			left: 75%;
+			}
+
+			.vTotal {
+				position: absolute;
+    			left: 90%;
+			}
+
+			.cinza {
+				background-color: hsla(0, 0%, 50%, 0.52);
+			}
+
+			/*.periodo{
+				    margin: 0px;
+    			font-size: 12px;
+    			font: inherit;
+			}*/
+
+			.titulo{
+				padding: 8px;
+    			font-size: 20px;
+			}
+			}
+			
+
+		</style>
+	</head>
+	<body>
+
+		<div class="negrito periodo">
+			<p> Período de: {{vm.gcr.dtInicio | date: 'dd/MM/yyyy'}} até: {{vm.gcr.dtFim | date: 'dd/MM/yyyy'}} </p><br>
+			<p class="separador">_________________________________________________________________________________________________________</p>
+		</div>	
+			
+		<div  class="negrito">
+			<h1 class="titulo"> GASTOS POR CLIENTE </h1>
+		</div>
+
+		<div>
+		<div class="cinza">
+			<span>Número</span> 
+			<span class="data">Data</span>
+			<span class="desc">Descrição</span> 
+			<span class="qtde">Quantidade </span> 
+			<span class="vUnit">Vl. Unitário</span> 
+			<span class="vTotal">Vl. Total</span>
+		</div>
+
+		<div ng-repeat="gasto in vm.tableParams.data">		
+			<div class="borda">
+				<span class="negrito fontQua">{{gasto.cliente.codigo}}</span>
+				<span class="negrito fontQua data">{{gasto.cliente.razaoSocial}}</span><br>	
+				<div ng-repeat="lancamento in gasto.lancamentos">			
+					<span>{{lancamento.numeroLancamento}}</span> 
+					<span class="data">{{lancamento.data | date: 'dd/MM/yyyy'}}</span>
+					<span class="desc">{{lancamento.produto}} </span> 
+					<span class="qtde"> {{lancamento.quantidade}} </span> 
+					<span class="vUnit"> {{lancamento.valorUnitario | currency}} </span> 
+					<span class="vTotal"> {{lancamento.valorTotal | currency}} </span><br>
+				</div>
+				<span class="negrito">Sub Total</span>
+				<span class="negrito vTotal"> {{gasto.subTotal | currency}} </span> 
+				
+			</div>
+		</div>
+
+		<div class="borda">
+			<span class="negrito">Total Geral</span>
+			<span class="negrito vTotal"> {{ vm.valorTotal | currency}} </span>
+		</div>
+		<div class="borda"></div>
+		</div>
+	</body>
+</html>

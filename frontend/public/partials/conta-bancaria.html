@@ -1,0 +1,59 @@
+<div ng-controller="ContaBancariaController as vm">
+	<h1>Conta Bancária</h1>
+
+	<div  ng-include="'../partials/confirmar-exclusao-modal.html'">
+	</div>
+			
+	<form name="contaBancariaForm" novalidate ng-submit="vm.salvar()">
+
+		<div class="row">
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="conta-bancaria-banco">(*)Banco</label>
+					<select class="form-control" ng-model="vm.contaBancaria.banco" name="banco" required
+					ng-options="banco.codigo as banco.descricao for banco in vm.bancos">
+						<option value="">Banco</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="conta-bancaria-agencia">(*)Agência</label>
+					<input autocomplete="off" ng-model="vm.contaBancaria.agencia" class="form-control" name="agencia" id="conta-bancaria-agencia" placeholder="Agência" required> 
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="conta-bancaria-conta-corrente">(*)Conta Corrente</label>
+					<input autocomplete="off" ng-model="vm.contaBancaria.contaCorrente" class="form-control" required name="contaCorrente" id="conta-bancaria-conta-corrente" placeholder="Conta Corrente"> 
+				</div>
+			</div>
+
+		</div>
+
+		<button type="submit" class="btn bnt-padrao">Salvar</button>
+	</form>
+
+	<br>
+
+	<table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" show-filter="true">
+	    <tr ng-repeat="contaBancaria in $data">
+	        <td  width="30%" title="'Banco'" filter="{ 'banco.descricao': 'text'}" sortable="'banco.descricao'">
+	            {{contaBancaria.banco.descricao}}</td>
+	        <td width="30%" title="'Agência'" filter="{ agencia: 'number'}" sortable="'agencia'">
+	            {{contaBancaria.agencia}}</td>
+            <td width="30%" title="'Conta Corrente'" filter="{ contaCorrente: 'number'}" sortable="'contaCorrente'">
+	            {{contaBancaria.contaCorrente}}</td>
+
+	        <td width="10%" title="'Ações'">
+	        	<button class="btn btn-default btn-sm" title="Alterar" ng-click="vm.editar(contaBancaria._id)"><span class="glyphicon glyphicon-pencil"></span></button>
+          	
+          		<button class="btn btn-danger btn-sm" title="Excluir" data-toggle="modal"  data-target="#confirmar-exclusao-modal" ng-click="vm.excluir(contaBancaria)"><span class="glyphicon glyphicon-trash"></span></button>
+          	</td>
+	    </tr>
+	</table>
+
+</div>

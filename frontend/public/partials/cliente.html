@@ -1,0 +1,402 @@
+<div ng-controller="ClienteController as vm">
+	<h1>Clientes</h1>
+
+	<div  ng-include="'../partials/etiqueta-modal.html'">
+	</div>
+
+	<!-- <div id="divRelatorio" style="display:none;"  ng-include="'../partials/etiqueta-impressao.html'"></div> -->
+
+	<div class="row">
+		
+		<div class="col-md-1">
+			<div class="form-group">
+				<button type="button" class="btn bnt-padrao" ng-click="vm.anterior()">
+					<span class="glyphicon glyphicon-menu-left"></span>
+				</button>
+			</div>
+		</div>
+
+		<div class="col-md-9">
+			<div class="form-group">
+				<div class="input-group">						
+					<input autocomplete="off" ng-model="vm.pesquisa" class="form-control" 
+					type="text" name="pesquisa" id="cliente-pesquisa" placeholder="Pesquisar">
+					<span class="input-group-btn" >
+			    		<button class="btn bnt-padrao" type="button" ng-click="vm.pesquisar()">Ok</button>
+			  		</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-1">
+			<div class="form-group">
+				<button type="button" class="btn bnt-padrao" ng-click="vm.novo()">
+					Novo
+				</button>
+			</div>
+		</div>
+		
+		<div class="col-md-1">
+			<div class="form-group">
+				<button type="button" class="btn bnt-padrao" style="float:right;"  ng-click="vm.proximo()">
+					<span class="glyphicon glyphicon-menu-right"></span>
+				</button>
+			</div>	
+		</div>
+	</div>
+
+	<form name="clienteForm" novalidate ng-submit="vm.salvar()">
+
+		<div class="row">
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-codigo">Código</label>
+					<input ng-model="vm.cliente.codigo" class="form-control" 
+					type="text" name="codigo" id="cliente-codigo"  readonly>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-razao-social">(*)Razão Social</label>
+					<input autocomplete="off" ng-model="vm.cliente.razaoSocial" class="form-control " 
+					type="text" name="razaoSocial" id="cliente-razao-social" placeholder="Razão Social" required>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-nome-comercial">Nome Comercial</label>
+					<input autocomplete="off" ng-model="vm.cliente.nomeComercial" class="form-control" 
+					type="text" name="nomeComercial" id="cliente-nome-comercial" placeholder="Nome Comercial">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-cnpf-cpf">(*)CNPJ/CPF</label>
+					<input autocomplete="off" ng-model="vm.cliente.cnpjCpf" class="form-control" 
+					type="text" name="cnpjCpf" id="cliente-cnpf-cpf" placeholder="CNPJ/CPF" ui-br-cpfcnpj-mask required>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-inscricao-estadual">Inscrição Estadual</label>
+					<input autocomplete="off" ng-model="vm.cliente.inscricaoEstadual" class="form-control" 
+					type="text" name="inscricaoEstadual" id="cliente-inscricao-estadual"  placeholder="Inscrição Estadual">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-inscricao-municipal">Inscricao Municipal</label>
+					<input autocomplete="off" ng-model="vm.cliente.inscricaoMunicipal" class="form-control" 
+					type="text" name="inscricaoMunicipal" id="cliente-inscricao-municipal" placeholder="Inscricao Municipal">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-email">E-mail</label>
+					<div class="input-group">
+						<div class="input-group-addon">@</div>
+						<input autocomplete="off" ng-model="vm.cliente.email" class="form-control" 
+						type="text" name="email" id="cliente-email" placeholder="E-mail">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-tipo-empresa">Tipo Empresa</label>
+					<input autocomplete="off" ng-model="vm.cliente.tipoEmpresa" class="form-control" 
+					type="text" name="tipoEmpresa" id="cliente-tipo-empresa" placeholder="Tipo Empresa">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="cliente-cep">(*)CEP</label>
+					<input autocomplete="off" ng-model="vm.endereco.cep" class="form-control" 
+					type="text" name="cep" id="cliente-cep"  placeholder="CEP" required sce-cep
+					ng-blur="vm.buscarEndereco(vm.endereco.cep)">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-rua">(*)Rua</label>
+					<input autocomplete="off" ng-model="vm.endereco.logradouro" class="form-control" 
+					type="text" name="rua" id="cliente-rua" placeholder="Rua" required>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="cliente-numero">(*)Número</label>
+					<input autocomplete="off" ng-model="vm.endereco.numero" class="form-control" 
+					type="text" name="numero" id="cliente-numero" placeholder="Número" required>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-complemento">Complemento</label>
+					<input autocomplete="off" ng-model="vm.endereco.complemento" class="form-control" 
+					type="text" name="complemento" id="cliente-complemento" placeholder="Complemento">
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="cliente-bairro">(*)Bairro</label>
+					<input autocomplete="off" ng-model="vm.endereco.bairro" class="form-control" 
+					type="text" name="bairro" id="cliente-bairro" placeholder="Bairro" required>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-1">
+				<div class="form-group">
+					<label for="cliente-uf"(*)>UF</label>
+					<select class="form-control" ng-model="vm.endereco.uf" name="uf" required
+					ng-options="uf as uf for uf in vm.ufs">
+						<option value="">UFs</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-md-5">
+				<div class="form-group">
+					<label for="cliente-cidade">(*)Cidade</label>
+					<input autocomplete="off" ng-model="vm.endereco.localidade" class="form-control" 
+					type="text" name="cidade" id="cliente-cidade" placeholder="Cidade" required>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="cliente-telefone">Telefone</label>
+					<input autocomplete="off" ng-model="vm.telefone.telefone" class="form-control" 
+					type="text" name="telefone" id="cliente-telefone" placeholder="Telefone"
+					ui-br-phone-number>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="cliente-celular">Celular</label>
+					<input autocomplete="off" ng-model="vm.telefone.celular" class="form-control" 
+					type="text" name="celular" id="cliente-celular" placeholder="Celular"
+					ui-br-phone-number>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="cliente-telefone-adicional">Telefone Adicional</label>
+					<input autocomplete="off" ng-model="vm.telefone.telefoneAdicional" class="form-control" 
+					type="text" name="telefoneAdicional" id="cliente-telefone-adicional" placeholder="Telefone Adicional" ui-br-phone-number>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-registro-inicial">Registro Inicial</label>
+					<input autocomplete="off" ng-model="vm.cliente.registroInicial" class="form-control" 
+					type="text" name="registroInicial" id="cliente-registro-inicial"  placeholder="Registro Inicial">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker"  >
+					<label for="cliente-data-registro">Data Registro</label>
+					<div class="input-group">
+					    <input autocomplete="off"  class="form-control" 
+						type="text" name="dataRegistro" id="cliente-data-registro" placeholder="Data Registro" ng-model="vm.cliente.dataRegistro" ui-date-mask>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-ultimo-registro">Último Registro</label>
+					<input autocomplete="off" ng-model="vm.cliente.ultimoRegistro" class="form-control" 
+					type="text" name="ultimoRegistro" id="cliente-ultimo-registro" placeholder="Último Registro">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker">
+					<label for="cliente-data-ultimo-registro">Data Último Registro</label>
+					<div class="input-group">
+					    <input autocomplete="off" ng-model="vm.cliente.dataUltimoRegistro" class="form-control" 
+						type="text" name="dataUltimoRegistro" id="cliente-data-ultimo-registro" placeholder="Data Último Registro" ui-date-mask>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker">
+					<label for="cliente-inicio-servicos">Início Serviços</label>
+					<div class="input-group">
+					    <input autocomplete="off" ng-model="vm.cliente.inicioServicos" class="form-control" 
+						type="text" name="inicioServicos" id="cliente-inicio-servicos" placeholder="Início Serviços" ui-date-mask>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="cliente-capital-social-reg">Capital Social Reg</label>
+					<input autocomplete="off" ng-model="vm.cliente.capitalSocialReg" class="form-control" 
+					type="text" name="capitalSocialReg" id="cliente-capital-social-reg"  placeholder="Capital Social Reg"  ui-money-mask="2">
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="cliente-capital-social-int">Capital Social Int</label>
+					<input autocomplete="off" ng-model="vm.cliente.capitalSocialInt" class="form-control" 
+					type="text" name="capitalSocialInt" id="cliente-capital-social-int"  placeholder="Capital Social Int"  ui-money-mask="2">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="cliente-responsavel-entrega">Responsável Entrega</label>
+					<input autocomplete="off" ng-model="vm.cliente.responsavelEntrega" class="form-control" 
+					type="text" name="responsavelEntrega" id="cliente-responsavel-entrega" placeholder="Responsável Entrega">
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="cliente-valor-mensalidade">Valor Mensalidade</label>
+					<input autocomplete="off" ng-model="vm.cliente.valorMensalidade" class="form-control" 
+					type="text" name="valorMensalidade" id="cliente-valor-mensalidade" placeholder="Valor Mensalidade" ui-money-mask="2">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker">
+					<label for="cliente-fim-servicos">Fim Serviços</label>
+					<div class="input-group">
+					    <input autocomplete="off" ng-model="vm.cliente.fimServicos" class="form-control" 
+						type="text" name="fimServicos" id="cliente-fim-servicos" placeholder="Fim Serviços" ui-date-mask>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-3">
+				<label class="checkbox-inline">
+				<input type="checkbox" id="cliente-gerar-boleto" ng-model="vm.cliente.gerarBoleto"
+					ng-click="vm.checkGerarBoleto()"> Gerar Boleto
+
+				<div ng-show="vm.cliente.gerarBoleto">
+
+					<div class="radio">
+						<label>
+							<input type="radio" name="tipoEnvioBoleto" id="tipoEnvioFisico"
+								ng-model="vm.cliente.envioBoleto" value="fisico">Envio Físico
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="tipoEnvioBoleto" id="tipoEnvioEmail"
+								ng-model="vm.cliente.envioBoleto" value="email">Envio E-mail
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="tipoEnvioBoleto" id="tipoEnvioAmbos"
+								ng-model="vm.cliente.envioBoleto" value="ambos">Envio Físico / E-mail
+						</label>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-3">
+				<label class="checkbox-inline">
+				<input type="checkbox" id="inlineCheckbox1" ng-model="vm.cliente.gerarEtiqueta"> Gerar Etiqueta
+			</div>
+			<div class="col-md-3">
+				<label class="checkbox-inline">
+				<input type="checkbox" id="inlineCheckbox1" ng-model="vm.cliente.decimoTerceiro"
+				ng-click="vm.checkDecimoTerceiro()"> Décimo Terceiro
+			
+
+				<div ng-show="vm.cliente.decimoTerceiro">
+
+					<div class="radio">
+						<label>
+							<input type="radio" name="tipoDecimoTerceiro" id="tipoDecimoComum"
+							ng-model="vm.cliente.tipoDecimoTerceiro" value="comum">Pagamento comum
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="tipoDecimoTerceiro" id="tipoDecimoParcelado"
+							ng-model="vm.cliente.tipoDecimoTerceiro" value="parcelado">Pagamento parcelado
+						</label>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<br>
+		
+
+		<button type="button" class="btn bnt-padrao" ng-click="vm.gerarEtiquetas()"
+		data-toggle="modal"  data-target="#etiqueta-modal">Gerar Etiqueta</button>
+		<button type="submit" class="btn bnt-padrao">Salvar</button>
+
+		<button type="button" class="btn bnt-padrao" style="float:right; margin-left: 5px;"  ng-click="vm.gerarRelatorio()">Gerar Contrato</button>
+		<span></span>
+		<button type="button" class="btn bnt-padrao" style="float:right;"  ng-click="vm.gerarRelatorioDistrato()">Gerar Distrato</button>
+
+	</form>
+	
+	<!-- Relatório -->
+	<div id="divRelatorio" style="display:none;"  ng-include="'./partials/contrato.html'"></div>
+	<div id="divRelatorioDistrato" style="display:none;"  ng-include="'./partials/distrato.html'"></div>
+</div>
+
+

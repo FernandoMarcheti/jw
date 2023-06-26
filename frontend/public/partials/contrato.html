@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">	
+		<title></title>
+
+        <style type="text/css">
+        
+        @media print {
+            body {
+                font-family: Arial;
+                font-size: 14px;
+                padding: 30px;
+                text-align: justify;
+            }
+
+            .carta{
+                padding: 12px 30px;
+                border: 1px solid black;
+                text-align: center;
+                width: auto;
+                margin: 0 auto;
+            }
+
+            .logotipo{
+                width: 26%;
+            }
+
+            .t50 {
+                text-indent: 50px;
+            }
+
+            .p50 {
+                margin-left: 50px;
+            }
+
+            .p65 {
+                margin-left: 65px;
+            }
+
+            .p100 {
+                margin-left: 100px;
+            }
+
+            .underline {
+                text-decoration: underline;
+            }
+            .titulo{
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+            .subtitulo{
+                font-size: 15px;
+                margin: 0;
+            }
+            .negrito {
+                font-weight: bold;
+            }
+            .no-mb {
+                margin-bottom: 0;
+            }
+            .no-mt {
+                margin-top: 0;
+            }
+            .mr {
+                margin-right: 20%;
+            }
+            .mr2 {
+                margin-right: 40%;
+            }
+            .ml {
+                margin-left: 3%;
+            }
+            .b-top {
+                border-top: 2px solid black;
+                margin-top: 50px;
+                width: 80%;
+                padding-top: 7px;
+            }
+        }
+			
+
+		</style>
+	</head>
+	<body align="justify">
+        
+        <img class="logotipo" src="../img/peco_logo.jpg" alt="Logotipo Pecorari">
+        <br /><br />
+        
+        <div class="negrito carta sublinhado">
+			<h2 class="subtitulo underline"> “INSTRUMENTO PARTICULAR DE CONTRATO DE PRESTAÇÃO DE SERVIÇOS PROFISSIONAIS CONTÁBEIS”¹ </h2>
+        </div>
+        <br /><br />
+
+        <p class="no-mb t50">
+            CONTRATADA: <span class="negrito">PECORARE & ASSOCIADOS CONTABILIDADE S/S LTDA.</span>, com sede social na cidade de Matão, Estado de São Paulo, 
+            na Avenida Santo Antonio, 550, Centro, Cep. 15.990-110, inscrita no CNPJ/MF sob nº 00.435.991/0001-35, inscrição 
+            municipal sob n° 118.705, devidamente inscrita no CRC SP sob nº 2SP027486/O-7, neste ato representada por 
+            <span class="negrito">DEIVES RAFAEL GOMES</span>, brasileiro, solteiro, nascido em 28.12.1981, natural de Araraquara–SP, advogado, inscrito 
+            na Ordem dos Advogados do Brasil/SP sob nº 328.722, portador do CIRG sob nº 42.110.089-8 – SSP/SP e inscrito no 
+            CPF/MF sob nº 300.076.858-07, residente e domiciliado na cidade de Matão, Estado de São Paulo, na Rua Otone 
+            Correa, 1.208, Jardim Bela Vista, Cep. 15.997-022; 
+        </p>
+        <p class="t50">
+            CONTRATANTE:</span> {{vm.cliente.razaoSocial }}, {{ vm.cliente.enderecos[0].endereco.logradouro}}, 
+            {{ vm.cliente.enderecos[0].endereco.numero}}, {{ vm.cliente.enderecos[0].endereco.bairro}}, CEP 
+            {{ vm.cliente.enderecos[0].endereco.cep}}, {{ vm.cliente.enderecos[0].endereco.localidade}} - {{ vm.cliente.enderecos[0].endereco.uf}}, 
+            CNPJ/CPF {{ vm.cliente.cnpjCpf | cnpj }}.
+        </p>
+
+        <p class="no-mt t50">
+            Pelo presente instrumento particular, as partes acima, devidamente qualificadas, doravante denominadas, 
+            simplesmente, <span class="negrito">CONTRATADA</span> e<span class="negrito"> CONTRATANTE</span>, na melhor forma de direito, ajustam e contratam a prestação de 
+            serviços profissionais, segundo as cláusulas e condições adiante arroladas. 
+        </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA PRIMEIRA – DO OBJETO </h2>
+        <p class="no-mt">
+            O objeto do presente consiste na prestação pela <span class="negrito">CONTRATADA</span> à <span class="negrito">CONTRATANTE</span> dos seguintes serviços profissionais: 
+        </p>
+
+        <p><span class="negrito">&sect; 1º. </span>ÁREA CONTÁBIL</p>
+        <p class="p50"> a) Classificação e escrituração da Contabilidade de acordo com as normas e princípios contábeis vigentes; </p>
+        <p class="p50">b) Apuração de balancetes;  </p>
+        <p class="p50">c) Balanço Anual e Demonstrações Contábeis; </p>
+
+        <p><span class="negrito">&sect; 2º. </span> ÁREA FISCAL </p>
+        <p class="p50"> a) Orientação e controle da aplicação dos dispositivos legais vigentes, sejam federais, estaduais ou municipais;  </p>
+        <p class="p50">b) Escrituração dos registros fiscais do IPI, ICMS, ISS e elaboração das guias de informação e de recolhimento dos tributos devidos;   </p>
+        <p class="p50">c) Atendimento das demais exigências previstas em atos normativos, bem como de eventuais procedimentos de fiscalização tributária;  </p>
+
+        <p><span class="negrito">&sect; 3º. </span>ÁREA DO IMPOSTO DE RENDA PESSOA JURÍDICA </p>
+        <p class="p50"> a)  Orientação e controle de aplicação dos dispositivos legais vigentes; </p>
+        <p class="p50">b)  Elaboração da declaração anual de rendimentos e documentos correlatos; </p>
+        <p class="p50">c) Atendimento das demais exigências previstas em atos normativos, bem como de eventuais procedimentos de fiscalização; </p>
+
+        <p><span class="negrito">&sect; 4º. </span>ÁREA TRABALHISTA E PREVIDENCIÁRIA </p>
+        <p class="p50"> a)  Orientação e controle da aplicação dos preceitos da Consolidação das Leis do Trabalho, bem como aqueles atinentes à Previdência Social, 
+            PIS, FGTS e outros aplicáveis às relações de emprego mantidas pela <span class="negrito">CONTRATANTE;</span>  </p>
+        <p class="p50">b)  Manutenção dos Registros de Empregados e serviços correlatos;  </p>
+        <p class="p50">c) Elaboração da Folha de Pagamento dos empregados e de <i>Pró-Labore</i>, bem como das guias de recolhimento 
+            dos encargos sociais e tributos afins;  </p>
+        <p class="p50">d) Atendimento das demais exigências previstas na legislação, bem como de eventuais procedimentos de fiscalização; </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA SEGUNDA – DAS CONDIÇÕES DE EXECUÇÃO DOS SERVIÇOS </h2>
+        <p class="no-mt">
+                Os serviços serão executados nas dependências da <span class="negrito">CONTRATADA</span>, em obediência às seguintes condições: 
+        </p>
+
+        <p class="p50">1) A documentação indispensável para o desempenho dos serviços arrolados na Cláusula Primeira será fornecida pela <span class="negrito">CONTRATANTE</span>, consistindo, basicamente, em:  </p>
+        <p class="p50">2) Boletim de caixa e documentos nele constantes;  </p>
+        <p class="p50">3) Extratos de todas as contas correntes bancárias, inclusive aplicações; e documentos relativos aos lançamentos, tais como depósitos, cópias de cheques, borderôs de cobrança, descontos, contratos de crédito, avisos de créditos, débitos, etc.;  </p>
+        <p class="p50">4) Notas fiscais de compra (entradas) e de venda (saídas), bem como comunicação de seu eventual cancelamento; </p>
+        <p class="p50">5) Controle de frequência dos empregados e eventual comunicação para concessão de férias, admissão ou rescisão contratual, bem como correções salariais espontâneas; </p>
+        <p class="p50">6) A documentação deverá ser enviada pela <span class="negrito">CONTRATANTE</span> de forma completa e em boa ordem nos seguintes prazos: </p>
+        <p class="p100">6.1 Até 5 (cinco) dias após o encerramento do mês, os documentos relacionados nos itens acima; </p>
+        <p class="p100">6.2 Semanalmente, os documentos mencionados nos itens acima, sendo que os relativos à última semana do mês, no 1° (primeiro) dia útil do mês seguinte;</p>
+        <p class="p100">6.3 Até o dia 25 do mês de referência quando se tratar dos documentos referente elaboração da folha de pagamento; </p>
+        <p class="p100">6.4 No mínimo, 48 (quarenta e oito) horas antes a comunicação para dação de aviso de férias e aviso prévio de rescisão contratual de empregados acompanhada do Registro de Empregados. </p>
+        <p class="p100">6.5 A <span class="negrito">CONTRATADA</span> compromete-se a cumprir todos os prazos estabelecidos na legislação de regência quanto aos serviços contratados, especificando-se, porém, os prazos abaixo: </p>
+        <p class="p100">6.5.1 A entrega das guias de recolhimento de tributos e encargos trabalhistas à <span class="negrito">CONTRATANTE</span> far-se-á com antecedência de 2 (dois) dias do vencimento da obrigação. </p>
+        <p class="p100">6.5.2 A entrega da Folha de Pagamento, recibos de pagamento salarial, de férias e demais obrigações trabalhistas far-se-á até 72 (setenta e duas) horas após o recebimento dos documentos relacionados; </p>
+        <p class="p100">6.5.3 A entrega de Balancete far-se-á até o dia 20 do 2° (segundo) mês subsequente ao período a que se referir; </p>
+        <p class="p100">6.5.4 A entrega do Balanço Anual far-se-á até 30 (trinta) dias após a entrega de todos os dados necessários à sua elaboração, principalmente o Inventário Anual de Estoques, por escrito, cuja execução é de responsabilidade da <span class="negrito">CONTRATANTE</span>; </p>
+        <p class="p100">6.5.5 A remessa de documentos entre os contratantes deverá ser feita sempre sob protocolo. </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA TERCEIRA – DOS DEVERES DA CONTRATADA </h2>
+        <p class="no-mt">
+            A <span class="negrito">CONTRATADA</span> desempenhará os serviços enumerados na Cláusula Primeira com todo zelo, diligência e honestidade, observada a legislação vigente, resguardando os interesses da <span class="negrito">CONTRATANTE</span>, sem prejuízo da dignidade e independência profissionais, sujeitando-se, ainda, às normas do Código de Ética Profissional do Contabilista, aprovado pela Resolução n° 803-96 do Conselho Federal de Contabilidade. 
+        </p>
+
+        <p><span class="negrito">&sect; 1º. </span>Responsabilizar-se-á a <span class="negrito">CONTRATADA</span> por todos os prepostos que atuarem nos serviços ora contratados, indenizando à <span class="negrito">CONTRATANTE</span>, independente de culpa ou dolo. </p>
+        <p><span class="negrito">&sect; 2º. </span>A <span class="negrito">CONTRATADA</span> assume integral responsabilidade por eventuais multas fiscais decorrentes de imperfeições ou atrasos nos serviços ora contratados, excetuando-se os ocasionados por força maior ou caso fortuito, assim definidos em lei, depois de esgotados os procedimentos de defesa administrativa, sempre observado o disposto no § 6º. </p>
+        <p><span class="negrito">&sect; 3º. </span>Não se incluem na responsabilidade assumida pela <span class="negrito">CONTRATADA</span> os juros e a correção monetária de qualquer natureza, visto que não se tratam de apenamento pela mora, mas, sim, de recomposição e remuneração do valor não-recolhido.</p>
+        <p><span class="negrito">&sect; 4º. </span> Obriga-se a <span class="negrito">CONTRATADA</span> a fornecer à <span class="negrito">CONTRATANTE</span>, no escritório dessa e dentro do horário normal de expediente, todas as informações relativas ao andamento dos serviços ora contratados. </p>
+        <p><span class="negrito">&sect; 5º. </span>Responsabilizar-se-á a <span class="negrito">CONTRATADA</span> por todos os documentos a ela entregues pela <span class="negrito">CONTRATANTE</span>, enquanto permanecerem sob sua guarda para a consecução dos serviços pactuados, respondendo pelo seu mau uso, perda, extravio ou inutilização, salvo comprovado caso fortuito ou força maior, mesmo se tal ocorrer por ação ou omissão de seus prepostos ou quaisquer pessoas que a eles tenham acesso. </p>
+        <p><span class="negrito">&sect; 6º. </span>A <span class="negrito">CONTRATADA</span> não assume nenhuma responsabilidade pelas consequências de informações, declarações ou documentação inidôneas ou incompletas que lhe forem apresentadas, bem como por omissões próprias da <span class="negrito">CONTRATANTE</span> ou decorrente do desrespeito à orientação prestada. </p>
+
+
+        <h2 class="subtitulo negrito">CLÁUSULA QUARTA – DOS DEVERES DA CONTRATANTE</h2>
+        <p class="no-mt">
+            Obriga-se a <span class="negrito">CONTRATANTE</span> a fornecer à <span class="negrito">CONTRATADA</span> todos os dados, documentos e informações que se façam necessários ao bom desempenho dos serviços ora contratados, em tempo hábil; nenhuma responsabilidade caberá à segunda caso recebidos intempestivamente. 
+        </p>
+
+        <p><span class="negrito">&sect; 1º.</span> Para a execução dos serviços constantes da cláusula primeira deste instrumento, a <span class="negrito">CONTRATANTE</span> pagará à <span class="negrito">CONTRATADA</span>, os honorários profissionais na importância de {{vm.cliente.valorMensalidade | currency}} ({{vm.cliente.valorMensalidade | extenso}}) mensais, até o dia 10 (dez) do mês subsequente ao vencido, podendo a cobrança ser veiculada por meio da respectiva duplicata de serviços, mantida em carteira ou via cobrança bancária. </p>
+        <p><span class="negrito">&sect; 2º. </span> Além da parcela acima avençada, a <span class="negrito">CONTRATANTE</span> pagará à <span class="negrito">CONTRATADA</span> uma parcela adicional, anual, correspondente ao valor de uma parcela mensal, para atendimento ao acréscimo de serviços e encargos próprios do período final do exercício, tais como o encerramento das demonstrações contábeis anuais, Declaração de Rendimentos da Pessoa Jurídica, DFC, elaboração de informes de rendimento, RAIS, Folhas de Pagamento do 13° Salário, DIRF e demais. </p>
+        <p><span class="negrito">&sect; 3º. </span>A mensalidade adicional mencionada no parágrafo anterior será paga em duas parcelas vencíveis nos dias 30 de novembro e 20 de dezembro de cada exercício, e seu valor será equivalente ao dos honorários vigentes no mês de pagamento. </p>
+        <p><span class="negrito">&sect; 4º. </span>Mesmo no caso de início do contrato em qualquer mês do exercício, a parcela adicional será devida proporcionalmente. </p>
+        <p><span class="negrito">&sect; 5º. </span>Caso o presente envolva a recuperação de serviços não-realizados–atrasados–a mensalidade adicional será, integralmente, devida desde o primeiro mês de atualização. </p>
+        <p><span class="negrito">&sect; 6º. </span>Os honorários pagos após a data avençada no § 1º, acarretarão à <span class="negrito">CONTRATANTE</span> o acréscimo de multa de 10% (dez por cento), sem prejuízo de juros moratórios de 1% (um por cento) ao mês ou fração. </p>
+        <p><span class="negrito">&sect; 7º. </span>Os honorários serão reajustados, anualmente, e automaticamente, segundo inflação do período, considerando-se como mês a fração igual ou superior a 15 (quinze) dias. </p>
+        <p><span class="negrito">&sect; 8º. </span> O valor dos honorários previstos no § 1º, foi estabelecido segundo o regime tributário da <span class="negrito">CONTRATANTE</span>, número de lançamentos contábeis, o número de funcionários e/ou sócios e o número de notas fiscais, ficando certo que se a média trimestral dos mesmos for superior aos parâmetros mencionados na proporção de 20% (vinte por cento), passará a viger nova mensalidade no mesmo patamar de aumento do volume de serviço, automaticamente, a partir do primeiro dia após o trimestre findo. </p>
+        <p><span class="negrito">&sect; 9º. </span>A <span class="negrito">CONTRATANTE</span> reembolsará à <span class="negrito">CONTRATADA</span> o custo de todos os materiais de expediente utilizados na execução dos serviços ora ajustados, tais como formulários contínuos, impressos fiscais, trabalhistas e contábeis, bem como livros fiscais, pastas, cópias reprográficas, autenticações, reconhecimento de firmas, custas, emolumentos e taxas exigidos pelos serviços públicos, sempre que utilizados e mediante recibo discriminado, acompanhado dos respectivos comprovantes de desembolso. </p>
+        <p><span class="negrito">&sect; 10º. </span>Os serviços solicitados pela <span class="negrito">CONTRATANTE</span> não-especificados na cláusula primeira serão cobrados pela <span class="negrito">CONTRATADA</span> em apartado, como extraordinários, segundo valor específico constante de orçamento previamente aprovado pela primeira, englobando nessa previsão toda e qualquer inovação da legislação relativamente ao regime tributário, trabalhista ou previdenciário. </p>
+        <p><span class="negrito">&sect; 11º. </span>São considerados serviços extraordinários ou para contábeis, exemplificativamente: 1) alteração contratual; 2) abertura de empresa; 3) emissões de certidões negativas do INSS, FGTS, Federais, ICMS e ISS; 4) Certidão negativa de falências ou protestos; 5) Homologação na DRT; 6) Autenticação/Registro de Livros; 7) Encadernação de livros; 8) Declaração de ajuste do imposto de renda pessoa física; 9) Preenchimento de fichas cadastrais/ IBGE; 10) Emissão de DECORE e outros que vierem a ser instituídos e necessários. </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA QUINTA – DA VIGÊNCIA E RESCISÃO </h2>
+        <p class="no-mt">
+                O presente contrato vigorará a partir de {{ vm.cliente.inicioServicos | date: dd/MM/yyyy }}, por prazo indeterminado, podendo, a qualquer tempo, ser rescindido mediante pré-aviso de 60 (sessenta) dias, mediante comunicação por escrito. 
+        </p>
+
+        <p><span class="negrito">&sect; 1º. </span>A parte que não comunicar, por escrito, a rescisão ou efetuá-la de forma sumária, desrespeitando o pré-aviso previsto, ficará obrigada ao pagamento de multa compensatória no valor de 2 (duas) parcelas mensais dos honorários vigentes à época. </p>
+        <p><span class="negrito">&sect; 2º. </span>No caso de rescisão, a dispensa pela <span class="negrito">CONTRATANTE</span> da execução de quaisquer serviços, seja qual for à razão, durante o prazo do pré-aviso, deverá ser feita por escrito, não a desobrigando do pagamento dos honorários integrais até o termo final do contrato. </p>
+        <p><span class="negrito">&sect; 3º. </span>Ocorrendo a transferência dos serviços para outra Empresa Contábil ou Contabilista, a <span class="negrito">CONTRATANTE</span> deverá informar à <span class="negrito">CONTRATADA</span>, por escrito, seu nome, 
+            endereço, nome do responsável e número da inscrição no Conselho Regional de Contabilidade, sem o que não será possível à <span class="negrito">CONTRATADA</span> cumprir as formalidades fiscais e ético-profissionais, inclusive a transmissão de dados e informações necessárias à continuidade dos serviços, em relação às quais, diante da eventual inércia da CONTRATANTE, estará desobrigada de cumprimento.</p>
+        <p><span class="negrito">&sect; 4º. </span>Entre os dados e informações a serem fornecidos não se incluem detalhes técnicos dos sistemas de informática da <span class="negrito">CONTRATADA</span>, os quais são de sua exclusiva propriedade.</p>
+        <p><span class="negrito">&sect; 5º. </span>A falta de entrega de documentos ou pagamento de qualquer parcela de honorários faculta à <span class="negrito">CONTRATADA</span> suspender, imediatamente, a execução dos serviços ora pactuados, bem como considerar, rescindido o presente, independentemente de notificação judicial ou extrajudicial, sem prejuízo do acréscimo de multa e juros moratórios, mediante notificação prévia da suspensão. </p>
+        <p><span class="negrito">&sect; 6º. </span>A falência da <span class="negrito">CONTRATANTE</span> facultará a rescisão do presente instrumento pela <span class="negrito">CONTRATADA</span>, independentemente de notificação judicial ou extrajudicial, não estando incluídos nos serviços ora pactuados a elaboração das peças contábeis arroladas nos artigos 51 e 105 da Lei nº 11.101-05 e demais decorrentes. </p>
+        <p><span class="negrito">&sect; 7º. </span>Considerar-se-á rescindido o presente instrumento/contrato, independentemente de notificação judicial ou extrajudicial, caso qualquer das partes <span class="negrito">CONTRATANTES</span> venha a infringir cláusula ora convencionada. </p>
+        <p><span class="negrito">&sect; 8º. </span>Fica estipulada a multa contratual de uma parcela mensal vigente relativa aos honorários, exigível por inteiro em face da parte que der causa à rescisão motivada, sem prejuízo do acréscimo de multa e juros moratórios, se o caso. </p>
+
+        <h2 class="subtitulo negrito">CLÁUSULA SEXTA – DO FORO </h2>
+        <p class="no-mt">
+            Fica eleito o Foro da cidade de Matão, Estado de São Paulo, com expressa renúncia a qualquer outro, por mais privilegiado que seja, para dirimir as questões oriundas da interpretação e execução do presente instrumento, ou DA CLÁUSULA COMPROMISSÓRIA (onde houver JUÍZO ARBITRAL). Os CONTRATANTES submeterão à arbitragem eventuais litígios oriundos do presente contrato. (Lei nº 9.307-96). 
+        </p>
+
+        <p>E, por estarem justos e contratados, assinam o presente, em 2 (duas) vias de igual teor e para um só efeito, na presença de 02 (duas) testemunhas. </p>
+        
+        <p class="p50">Matão – SP, {{ vm.cliente.inicioServicos | date: "dd 'de' MMMM 'de' yyyy" }} </p>
+
+
+        <p class="no-mt no-mb b-top">CONTRATADA: <span class="negrito">PECORARE & ASSOCIADOS CONTABILIDADE S/S LTDA.</span> </p>
+        <p class="no-mt">REPRESENTANTE:<span class="negrito"> DEIVES RAFAEL GOMES</span> </p>
+
+        <p class="no-mt no-mb b-top">CONTRATANTE:
+            {{vm.cliente.razaoSocial }}.
+        </p>
+
+        <p style="margin: 50px 0 50px 0;">TESTEMUNHAS</p>
+
+        <p class="p50 no-mb">1) Nome:______________________________ </p>
+        <p class="p65 no-mt">CIRG sob nº: ________________________ </p>
+
+        <p class="p50 no-mb">2) Nome:______________________________ </p>
+        <p class="p65 no-mt">CIRG sob nº: ________________________ </p>
+        
+	</body>
+</html>

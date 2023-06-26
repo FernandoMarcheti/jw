@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">	
+		<title></title>
+
+		<style type="text/css">
+			@media print {
+
+				.sem-margem{
+					margin: 0;
+				}
+
+				.separador {
+				    margin-top: -25px;
+				    margin-bottom: 0;
+					padding: 0;
+				}
+
+				.semEspaco {
+				    margin: 0;
+					padding: 0;
+				}
+
+				body{
+			    	font-family: sans-serif;
+			    	font-size: 12px;
+			    	width: 100%;		    	
+				}
+
+				.fontQua {
+					font-size: 14px;
+				}
+
+				.rodape{
+					font-size: 16px;
+					text-align: right;
+				}
+
+				.sublinhado{
+					text-decoration: underline;
+				}
+
+				.negrito{
+					font-weight: bold;
+				}
+
+				tfoot{
+				    border-top: 1px solid black;
+				}
+
+				.carta{
+					padding: 25px 80px;
+				    border: 1px solid black;
+			        text-align: center;
+		            width: 250px;
+	                margin: 0 auto;
+				}
+
+				.borda {
+				    border-top: 1px solid black;
+				    width: 100%;
+				}
+
+				.center{
+				    text-align: center;
+				}
+
+				.left {
+				    text-align: left;
+				}		
+
+				.cliente-titulo {
+				    position: absolute;
+	    			left: 20%;
+				}	
+
+				.cliente {
+				    position: absolute;
+	    			left: 10%;
+				}
+
+				.vencimento {
+					position: absolute;
+	    			left: 60%;
+				}
+
+				.mensalidade {
+					position: absolute;
+	    			left: 70%;
+				}
+
+				.produtos {
+					position: absolute;
+	    			left: 80%;
+				}
+
+				.vTotal {
+					position: absolute;
+	    			left: 90%;
+				}
+
+				.cinza {
+					background-color: hsla(0, 0%, 50%, 0.52);
+				}
+
+				/*.periodo{
+					    margin: 0px;
+	    			font-size: 12px;
+	    			font: inherit;
+				}*/
+
+				.titulo{
+					padding: 8px;
+	    			font-size: 20px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="negrito periodo">
+			<p> Período de: {{vm.dataInicio | date: 'dd/MM/yyyy'}} até: {{vm.dataFim | date: 'dd/MM/yyyy'}} </p><br>
+			<p class="separador">_________________________________________________________________________________________________________</p>
+		</div>	
+			
+		<div  class="negrito">
+			<h1 class="titulo"> Títulos em Aberto </h1>
+		</div>
+
+		<div>
+		<div class="cinza">
+			<span>Nº Documento</span> 
+			<span class="cliente-titulo">Cliente</span>
+			<span class="vencimento">Vencimento</span> 
+			<span class="mensalidade">Mensalidade </span> 
+			<span class="produtos">Produtos</span> 
+			<span class="vTotal">Vl. Total</span>
+		</div>
+
+		<div ng-repeat="titulo in vm.tableParams.data">		
+			<div class="borda">			
+				<span>{{titulo.numeroFechamento}}</span> 
+				<span class="cliente">{{titulo.cliente | limitTo : 48 }}</span>
+				<span class="vencimento">{{titulo.dataVencimento | date: 'dd/MM/yyyy'}} </span> 
+				<span class="mensalidade"> {{titulo.mensalidade | currency}} </span> 
+				<span class="produtos"> {{titulo.valorLancamento | currency}} </span> 
+				<span class="vTotal"> {{titulo.valorTotal | currency}} </span><br>
+			</div>
+		</div>
+
+		<div class="borda">
+			<div class="rodape">
+				<p class="sem-margem">
+					<span class="negrito">Total Mensalidade: {{vm.totalMensalidade | currency}}</span>
+				</p>
+				<p class="sem-margem">
+					<span class="negrito">Total Despesas: {{vm.totalDespesas | currency}}</span>
+				</p>
+				<p class="sem-margem">
+					<span class="negrito">Total Geral: {{vm.totalGeral | currency}}</span>
+				</p>
+			</div>	
+		</div>
+	</body>
+</html>

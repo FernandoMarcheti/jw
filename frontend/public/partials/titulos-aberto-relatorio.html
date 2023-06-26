@@ -1,0 +1,66 @@
+<div ng-controller="ContasReceberRelatorioController as vm">
+	<h1>Títulos em Aberto</h1>
+
+	<form name="titulosAbertoForm" novalidate>
+
+		<div class="row">
+
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker"  >
+					<label for="titulos-aberto-data-inicio">(*)Data Início</label>
+					<div class="input-group">
+					    <input  class="form-control" 
+						type="text" name="dataInicio" id="titulos-aberto-data-inicio" placeholder="Data Início" ng-model="vm.dataInicio" ui-date-mask required>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker"  >
+					<label for="titulos-aberto-data-fim">(*)Data Fim</label>
+					<div class="input-group">
+					    <input  class="form-control" 
+						type="text" name="dataFim" id="titulos-aberto-data-fim" placeholder="Data Fim" ng-model="vm.dataFim" ui-date-mask required
+						>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+		</div>
+
+		<br>
+
+		<button type="button" class="btn bnt-padrao" ng-click="vm.pesquisar()">Pesquisar</button>
+		<button type="button" class="btn bnt-padrao" ng-click="vm.gerarRelatorio()"
+		ng-disabled="!vm.habilitarBotaoGerar">Imprimir</button>
+
+	</form>
+	
+	<br>
+
+	<div ng-if="vm.titulosAberto.length">
+		<table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" show-filter="true">
+		    <tr ng-repeat="titulo in $data">
+		        <td width="10%" title="'Nº Documento'" sortable="'numeroFechamento'">
+		            {{titulo.numeroFechamento}}</td>
+		        <td width="40%" title="'Cliente'" sortable="'cliente'">
+		            {{titulo.cliente }}</td>
+	            <td width="10%" title="'Vencimento'" sortable="'dataVencimento'">
+		            {{titulo.dataVencimento | date:'dd/MM/yyyy'}}</td>
+	            <td width="10%" title="'Mensalidade'" sortable="'mensalidade'">{{titulo.mensalidade | currency}}</td>
+	            <td width="10%" title="'Produtos'" sortable="'valorLancamento'">{{titulo.valorLancamento | currency}}</td>
+	            <td width="12%" title="'Valor'" sortable="'valorTotal'">{{titulo.valorTotal | currency}}</td>
+		    </tr>
+		</table>
+	</div>
+	
+	<!-- Relatório -->
+	<div id="divRelatorio" style="display:none;"  ng-include="'../partials/titulos-aberto-relatorio-impressao.html'"></div>
+
+</div>

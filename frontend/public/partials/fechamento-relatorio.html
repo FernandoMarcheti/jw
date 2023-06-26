@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">	
+		<title></title>
+
+		<style type="text/css">
+			
+			@media print{
+				.separador {
+				    margin-top: -25px;
+				    margin-bottom: 0;
+					padding: 0;
+				}
+
+				.semEspaco {
+				    margin: 0;
+					padding: 0;
+				}
+
+				.font-relatorio{
+			    	font-family: sans-serif;
+			    	font-size: 10px;
+				}
+
+				.fontQua {
+					font-size: 14px;
+				}
+
+				.sublinhado{
+					text-decoration: underline;
+				}
+
+				.negrito{
+					font-weight: bold;
+				}
+
+				tfoot{
+				    border-top: 1px solid black;
+				}
+
+				.carta{
+					padding: 25px 80px;
+				    border: 1px solid black;
+			        text-align: center;
+		            width: 250px;
+	                margin: 0 auto;
+				}
+
+				.borda {
+				    border-top: 1px solid black;
+				}
+
+				.center{
+				    text-align: center;
+				}
+
+				.left {
+				    text-align: left;
+				}	
+
+				.right {
+				    text-align: right;
+				}		
+
+				.data {
+				    position: absolute;
+	    			left: 10%;
+				}
+
+				.desc {
+					position: absolute;
+	    			left: 20%;
+				}
+
+				.qtde {
+					position: absolute;
+	    			left: 60%;
+				}
+
+				.vUnit {
+					position: absolute;
+	    			left: 75%;
+				}
+
+				.vTotal {
+					position: absolute;
+	    			left: 90%;
+				}
+
+				.cinza {
+					background-color: hsla(0, 0%, 50%, 0.52);
+				}
+
+				/*.periodo{
+					    margin: 0px;
+	    			font-size: 12px;
+	    			font: inherit;
+				}*/
+
+				.titulo{
+					padding: 8px;
+	    			font-size: 20px;
+				}
+			}
+
+		</style>
+	</head>
+	<body>
+		
+		<div class="negrito periodo">
+			<p> Período de: {{vm.fechamento.dataInicio | date:'dd/MM/yyyy'}} até: {{vm.fechamento.dataFim | date:'dd/MM/yyyy'}} </p><br>
+			<p class="separador">____________________________________________________________________________________</p>
+		</div>	
+			
+		<div  class="negrito">
+			<h1 class="titulo"> CONTAS À RECEBER </h1>
+		</div>
+
+		<div>
+		<div class="cinza font-relatorio">
+			<span>Nº Fatura</span> 
+			<span class="data">Vencimento</span>
+			<span class="desc">Cliente</span> 
+			<span class="qtde">Valor Mensalidade </span> 
+			<span class="vUnit">Valor Despesas</span> 
+			<span class="vTotal">Valor Total</span>
+		</div>
+
+		<div class="font-relatorio" ng-repeat="conta in vm.contasReceberRelatorio">		
+			<div class="borda">			
+				<span>{{conta.numeroFechamento}}</span> 
+				<span class="data">{{conta.dataVencimento | date:'dd/MM/yyyy'}}</span>
+				<span class="desc">{{conta.cliente | limitTo : 43}} </span> 
+				<span class="qtde"> {{conta.mensalidade | currency}} </span> 
+				<span class="vUnit"> {{conta.valorLancamento | currency}} </span> 
+				<span class="vTotal"> {{conta.valorTotal | currency}} </span><br>
+			</div>				
+		</div>
+
+		<div class="borda font-relatorio">
+			<p class="right">
+				<span class="negrito">Total Mensalidade:</span>
+				<span class="negrito"> {{vm.totalMensalidade | currency}} </span>
+			</p>
+			<p class="right">
+				<span class="negrito">Total Despesas:</span>
+				<span class="negrito"> {{vm.totalDespesas | currency}} </span>
+			</p>
+			<p class="right">
+				<span class="negrito">Total Geral:</span>
+				<span class="negrito"> {{vm.totalGeral | currency}} </span>
+			</p>
+		</div>
+	</body>
+</html>

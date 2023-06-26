@@ -1,0 +1,63 @@
+<div ng-controller="ValoresProdutoRelatorioController as vm">
+	<h1>Valores por Produto</h1>
+
+	<form name="produtoRelatorioForm" novalidate>
+
+		<div class="row">
+
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker"  >
+					<label for="valores-produtos-data-inicio">(*)Data Início</label>
+					<div class="input-group">
+					    <input  class="form-control" 
+						type="text" name="dataInicio" id="valores-produtos-data-inicio" placeholder="Data Início" ng-model="vm.dataInicio" ui-date-mask required>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker"  >
+					<label for="valores-produtos-data-fim">(*)Data Fim</label>
+					<div class="input-group">
+					    <input  class="form-control" 
+						type="text" name="dataFim" id="valores-produtos-data-fim" placeholder="Data Fim" ng-model="vm.dataFim" ui-date-mask required
+						>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+		</div>
+
+		<br>
+
+		<button type="button" class="btn bnt-padrao" ng-click="vm.pesquisar()">Pesquisar</button>
+		<button type="button" class="btn bnt-padrao" ng-click="vm.gerarRelatorio()"
+		ng-disabled="!vm.habilitarBotaoGerar">Imprimir</button>
+
+	</form>
+	
+	<br>
+
+	<div ng-if="vm.produtosRelatorio.length">
+		<table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" show-filter="true">
+		    <tr ng-repeat="produto in $data">
+		        <td width="10%" title="'Código'" sortable="'codigo'">
+		            {{produto.codigo}}</td>
+		        <td width="40%" title="'Nome'" sortable="'nome'">
+		            {{produto.nome }}</td>
+	            <td width="10%" title="'Valor'" sortable="'valor'">
+		            {{produto.valor | currency}}</td>
+		    </tr>
+		</table>
+	</div>
+	
+	<!-- Relatório -->
+	<div id="divRelatorio" style="display:none;"  ng-include="'../partials/valores-produtos-relatorio-impressao.html'"></div>
+
+</div>

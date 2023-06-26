@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">		
+		<title></title>
+
+		<style type="text/css">
+			.sublinhado{
+				text-decoration: underline;
+			}
+
+			.negrito{
+				font-weight: bold;
+			}
+
+			.carta{
+				padding: 25px 80px;
+			    border: 1px solid black;
+		        text-align: center;
+	            width: 250px;
+                margin: 0 auto;
+			}
+
+			.center{
+			    text-align: center;
+			}
+
+			p {
+				margin-bottom: 10px;
+			}
+
+			.margin-top-10 {
+				margin-top: 10px;
+			}
+
+			.height-20 {
+				height: 20px;
+			}
+
+			.logotipo{
+				width: 26%;
+			}
+			
+			.direita {
+			    position: absolute;
+			    left: 65%;
+			}
+		</style>
+	</head>
+	<body>
+
+		<img class="logotipo" src="../img/peco_logo.jpg" alt="Logotipo Pecorari">
+		<br /><br />
+		<div class="negrito destinatario">
+			<p> À <span class="direita">{{vm.cartaCobranca.data}}</span></p>
+			<p class="sublinhado"> {{vm.cartaCobranca.cliente}} </p>
+			<p> {{vm.cartaCobranca.endereco}} </p>
+			<p> Att. SR. {{vm.cartaCobranca.responsavel}} </p>
+		</div>	
+			
+		<div  class="negrito carta sublinhado">
+			<span> CARTA DE COBRANÇA </span>
+		</div>
+		<br>
+		<p>Informamos que até a data de emissão desta comunicação não identificamos os pagamentos das mensalidades abaixo relacionadas, referente às faturas de sua responsabilidade.</p>
+
+		  <section layout="column" flex-gt-sm="100">
+		<table class="center" style="width:100%;">
+			<thead>
+				<tr class="height-20">
+					<th class="negrito sublinhado" width="20%">Nº Título</th>
+					<th class="negrito sublinhado" width="20%">Data Vencto. </th>
+					<th class="negrito sublinhado" width="20%">Valor Mensalidade</th>
+					<th class="negrito sublinhado" width="20%">Valor Despesas </th>
+					<th class="negrito sublinhado" width="20%">Valor Título</th>
+				</tr>				
+			</thead>
+			<tbody>
+				<tr ng-repeat="conta in vm.relatorioCartaCobranca" class="remove-itens-grid" class="height-20">
+					<td class="height-20">{{conta.nrTitulo}}</td>
+					<td class="height-20">{{conta.dataVenc | date:'dd/MM/yyyy'}}</td>
+					<td class="height-20">{{conta.valorMensalidade}}</td>
+					<td class="height-20">{{conta.valorDespesas}}</td>
+					<td class="height-20">{{conta.valorTitulo}}</td>
+				</tr>
+			</tbody>
+			<tr class="remove-itens-grid negrito">
+				<td colspan="2" class="text-left">Total</td>
+				<td>{{vm.valorTotalMensalidadeCarta}}</td>
+				<td>{{vm.valorTotalDespesas}}</td>
+				<td>{{vm.valorTotalTitulo}}</td>
+			</tr>
+		</table>
+		</section>
+
+		<div class="margin-top-10">
+			<p>Lembramos que o pagamento das mensalidades supra, deve ser realizado em até 10 (dez) dias.</p>
+			<p>Qualquer dúvida entre em contato conosco através do telefone: (16) 3382 1423 – Ramal 23.</p>
+			<p>Atenciosamente,</p>
+		</div>
+
+		<div class="center">
+			<p>_______________________________________________________</p>
+			<p  class="negrito">PECORARE & ASSOCIADOS CONTABILIDADE S/S LTDA</p>
+		</div>
+
+	</body>
+</html>

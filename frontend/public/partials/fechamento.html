@@ -1,0 +1,77 @@
+<div ng-controller="FechamentoController as vm">
+	<h1>Fechamento</h1>
+
+	<div  ng-include="'../partials/boleto-informacoes-modal.html'">
+	</div>
+
+	<div  ng-include="'../partials/boleto-13-informacoes-modal.html'">
+	</div>
+
+	<div  ng-include="'../partials/confirmar-impressao-boleto-modal.html'">
+	</div>
+
+	<div  ng-include="'../partials/fechamento-relatorio-modal.html'">
+	</div>
+
+	<div id="divRelatorio" style="display:none;" ng-include="'/partials/fechamento-relatorio.html'"></div>
+
+	<form name="fechamentoForm" novalidate>
+
+		<div class="row">
+
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker"  >
+					<label for="fechamento-data-inicio">(*)Data Início</label>
+					<div class="input-group">
+					    <input  class="form-control" 
+						type="text" name="dataInicio" id="fechamento-data-inicio" placeholder="Data Início" ng-model="vm.fechamento.dataInicio" ui-date-mask>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker"  >
+					<label for="fechamento-data-fim">(*)Data Fim</label>
+					<div class="input-group">
+					    <input  class="form-control" 
+						type="text" name="dataFim" id="fechamento-data-fim" placeholder="Data Fim" ng-model="vm.fechamento.dataFim" ui-date-mask>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+		</div>
+
+		<br>
+
+		<button type="button" class="btn bnt-padrao" ng-click="vm.Fechamento(fechamentoForm)" ng-disabled="fechamentoGerado">Fechamento</button>
+
+		<button type="button" class="btn bnt-padrao" ng-disabled="!vm.fechamentosAgrupados.length"
+		data-toggle="modal"  data-target="#boleto-modal">Gerar Contas a receber</button>
+
+		<button type="button" class="btn bnt-padrao" data-toggle="modal"  data-target="#boleto-13-modal">Gerar 13º</button>
+
+	</form>
+	
+	<br>
+	
+	<div ng-if="vm.fechamentosAgrupados.length">
+		<table  ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" show-filter="true">
+		    <tr ng-repeat="fechamento in $data">
+		        <td width="10%" title="'Nº Fechamento'" filter="{ numeroFechamento: 'number'}" sortable="'numeroFechamento'">
+		            {{fechamento.numeroFechamento}}</td>
+		        <td width="60%" title="'Cliente'" filter="{ cliente: 'text'}" sortable="'cliente'">
+		            {{fechamento.cliente}}</td>
+	            <td width="22%" title="'Mensalidade'" filter="{ mensalidade: 'number'}" sortable="'mensalidade'">{{fechamento.mensalidade}}</td>
+	            <td width="22%" title="'Valor dos Lançamentos'" filter="{ valorLancamento: 'text'}" sortable="'valorLancamento'">{{fechamento.valorLancamento}}</td>
+	            <td width="22%" title="'Valor'" filter="{ valorTotal: 'text'}" sortable="'valorTotal'">{{fechamento.valorTotal}}</td>
+		    </tr>
+		</table>
+	</div>
+
+</div>

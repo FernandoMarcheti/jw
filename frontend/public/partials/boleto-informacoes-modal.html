@@ -1,0 +1,65 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="boleto-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Informações do Boleto</h4>
+            </div>
+            
+            <form name="boletoInfoForm" novalidate ng-submit="vm.gerarContasAReceber()">
+                <div class="container">
+                
+                    <br>
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="input-group date" data-provide="datepicker"  >
+                                <label for="boleto-info-data-vencimento">Data de Vencimento</label>
+                                <div class="input-group">
+                                    <input ng-model="vm.fechamento.dataVencimento" class="form-control" 
+                                type="text" name="dataVencimento" id="boleto-info-data-vencimento" placeholder="Data de Vencimento" ui-date-mask>
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-th"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="boleto-info-observacao">Observação</label>
+                                <input ng-model="vm.fechamento.observacao" class="form-control" 
+                                type="text" name="observacao" id="boleto-info-observacao" placeholder="Observação">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="boleto-info-banco">(*)Banco</label>
+                                <select class="form-control" ng-model="vm.fechamento.banco" name="banco" required
+                                ng-options="banco.banco.descricao as banco.banco.descricao for banco in vm.contasBancarias">
+                                    <option value="">Bancos</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-md-3">
+                            <label class="checkbox-inline">
+                            <input type="checkbox" id="etiqueta-todos" ng-model="vm.gerarEtiquetaTodos"> Gerar Etiqueta
+                        </div> -->
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn bnt-padrao">Ok</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="etiqueta-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Gerar Etiquetas</h4>
+            </div>
+            
+            <form name="etiquetaForm" novalidate ng-submit="vm.confirmar(vm)">
+                <div class="container">
+                
+                    <br>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input ng-model="vm.quantidadeEtiqueta" class="form-control" 
+                                type="text" ui-number-mask="0" name="quantidadeEtiqueta" id="cliente-etiqueta" placeholder="Quantidade" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="checkbox-inline">
+                            <input type="checkbox" id="etiqueta-todos" ng-model="vm.gerarEtiquetaTodos"> Gerar Etiqueta
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn bnt-padrao">Imprimir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

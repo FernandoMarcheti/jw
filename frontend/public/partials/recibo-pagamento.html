@@ -1,0 +1,61 @@
+<div ng-controller="ReciboPagamentoController as vm">
+	<h1>Recibo de Pagamento</h1>
+
+	<form name="reciboPagamentoForm" novalidate>
+
+		<div class="row">
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="recibo-pagamento-referente">(*)Referente</label>
+					<input autocomplete="off" ng-model="vm.reciboPagamento.referente" class="form-control" 
+					type="text" name="referente" id="recibo-pagamento-referente" placeholder="Referente" required>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker"  >
+					<label for="recibo-pagamento-data-emissao">(*)Data Emissão</label>
+					<div class="input-group">
+					    <input autocomplete="off"  class="form-control" 
+						type="text" name="dataEmissao" id="recibo-pagamento-data-emissao" placeholder="Data Emissão" ng-model="vm.reciboPagamento.dataEmissao" ui-date-mask required>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="recibo-pagamento-valor">(*)Valor</label>
+					<input autocomplete="off" ng-model="vm.reciboPagamento.valor" class="form-control" 
+					type="text" name="valor" id="recibo-pagamento-valor" placeholder="Valor" ui-money-mask="2" required>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="recibo-pagamento-favorecido">(*)Favorecido</label>
+					<input autocomplete="off" ng-model="vm.reciboPagamento.favorecido" class="form-control" 
+					type="text" name="favorecido" id="recibo-pagamento-favorecido" placeholder="Favorecido" required ng-keyup="vm.completeCliente(vm.reciboPagamento.favorecido)" ng-blur="vm.hideClientes()" ng-focus="vm.hideOrShowCliente(vm.cliente)">
+					<ul class="list-group" ng-model="vm.hideCliente" ng-hide="vm.hideCliente">
+						<li class="list-group-item" ng-repeat="cliente in vm.filterClientes" 
+						ng-click="vm.setInputCliente(cliente)">{{cliente.codigo}} - {{cliente.razaoSocial}}</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>	
+
+		<button type="button" class="btn bnt-padrao" ng-click="vm.imprimir()">Imprimir
+		</button>
+
+	</form>
+	
+	<div id="divRelatorio" style="display:none;" ng-include="'/partials/recibo-pagamento-impressao.html'"></div>
+</div>

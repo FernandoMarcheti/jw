@@ -1,0 +1,111 @@
+<div ng-controller="LancamentoController as vm">
+	<h1>Lançamento</h1>
+
+	<form name="lancamentoForm" novalidate ng-submit="vm.salvar()">
+
+		<div class="row">
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="lancamento-numero-lancamento">Número do Lançamento</label>
+					<input ng-model="vm.lancamento.numeroLancamento" class="form-control" 
+					type="text" name="numeroLancamento" id="lancamento-numero-lancamento" readonly>
+				</div>
+			</div>
+
+			<div class="col-md-5">
+				<div class="form-group">
+					<label for="lancamento-cliente">(*)Cliente</label>
+					<input autocomplete="off" ng-model="vm.cliente" class="form-control " 
+					type="text" name="cliente" id="lancamento-cliente" placeholder="Cliente" required ng-keyup="vm.completeCliente(vm.cliente)" ng-blur="vm.hideClientes()"
+					ng-focus="vm.hideOrShowCliente(vm.cliente)">
+					<ul class="list-group" ng-model="vm.hideCliente" ng-hide="vm.hideCliente">
+						<li class="list-group-item" ng-repeat="cliente in vm.filterClientes" 
+						ng-click="vm.setInputCliente(cliente)">{{cliente.codigo}} - {{cliente.razaoSocial}}</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-5">
+				<div class="form-group">
+					<label for="lancamento-produto">(*)Produto</label>
+					<input autocomplete="off" ng-model="vm.produto" class="form-control"
+					type="text" name="produto" id="lancamento-produto" placeholder="Produto" required
+					ng-keyup="vm.completeProduto(vm.produto)" ng-blur="vm.hideProdutos()"
+					ng-focus="vm.hideOrShowProduto(vm.produto)">
+					<ul class="list-group" ng-model="vm.hideProduto" ng-hide="vm.hideProduto">
+						<li class="list-group-item" ng-repeat="produto in vm.filterProdutos" 
+						ng-click="vm.setInputProduto(produto)">{{produto.codigo}} - {{produto.nome}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+<!-- vm.carregarValorUnitario(vm.produto) -->
+		<div class="row">
+			
+			<div class="col-md-3">
+				<div class="input-group date" data-provide="datepicker"  >
+					<label for="lancamento-data-lancamento">(*)Data</label>
+					<div class="input-group">
+					    <input autocomplete="off"  class="form-control" 
+						type="text" name="dataLancamento" id="lancamento-data-lancamento" placeholder="Data" ng-model="vm.lancamento.data" ui-date-mask>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+				    </div>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="lancamento-quantidade">(*)Quantidade</label>
+					<input autocomplete="off" ng-model="vm.lancamento.quantidade" class="form-control " 
+					type="text" name="quantidade" id="lancamento-quantidade" placeholder="Quantidade"required ui-number-mask="0" ng-blur="vm.calculaTotal()">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="lancamento-valor-unitario">(*)Valor Unitário</label>
+					<input autocomplete="off" ng-model="vm.lancamento.valorUnitario" class="form-control " 
+					type="text" name="valorUnitario" id="lancamento-valor-unitario" placeholder="Valor Unitário" required min="0.01" ui-money-mask="2" max="999999.99" ng-blur="vm.calculaTotal()">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="lancamento-valor-total">(*)Valor Total</label>
+					<input autocomplete="off" ng-model="vm.lancamento.valorTotal" class="form-control " 
+					type="text" name="valorTotal" id="lancamento-valor-total" placeholder="Valor Total" required readonly ui-money-mask="2">
+				</div>
+			</div>
+
+		</div>
+
+		<br>
+
+		<button type="submit" class="btn bnt-padrao">Salvar</button>
+	</form>
+
+	<br>
+
+	<table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" show-filter="true">
+	    <tr ng-repeat="lancamento in $data">
+
+	        <td width="10%" title="'Nº Lançamento'" filter="{ numeroLancamento: 'number'}" sortable="'numeroLancamento'">
+	            {{lancamento.numeroLancamento}}</td>
+	        <td width="35%" title="'Cliente'" filter="{ 'cliente.razaoSocial': 'text'}" sortable="'cliente.razaoSocial'">
+	            {{lancamento.cliente.razaoSocial}}</td>
+            <td width="30%" title="'Produto'" filter="{ 'produto.nome': 'text'}" sortable="'produto.nome'">{{lancamento.produto.nome}}</td>
+           <td width="10%" title="'Data'" filter="{ 'data': 'text'}" sortable="'data'">
+	            {{lancamento.data | date:'dd/MM/yyyy'}}</td>
+            <td width="10%" title="'Valor'" filter="{ valorTotal: 'number'}" sortable="'valorTotal'">
+	            {{lancamento.valorTotal | currency}}</td>
+
+	        <td width="5%" title="'Ações'">
+	        	<button class="btn btn-default btn-sm" title="Alterar" ng-click="vm.editar(lancamento)"><span class="glyphicon glyphicon-pencil"></span></button>
+          	</td>
+	    </tr>
+	</table>
+
+</div>

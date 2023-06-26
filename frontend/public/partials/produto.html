@@ -1,0 +1,48 @@
+<div ng-controller="ProdutoController as vm">
+	<h1>Produtos</h1>
+
+	<div  ng-include="'../partials/confirmar-exclusao-modal.html'">
+	</div>
+			
+	<form name="produtoForm" novalidate ng-submit="vm.salvar()">
+
+		<div class="row">
+
+			<div class="col-md-9">
+				<div class="form-group">
+					<label for="produto-descricao">Descrição(*)</label>
+					<input autocomplete="off" required ng-model="vm.produto.nome" class="form-control" type="text" name="nome" id="produto-descricao"  placeholder="Descrição">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="produto-valor">Valor</label>
+					<input autocomplete="off" ng-model="vm.produto.valor" class="form-control" name="valor" id="produto-valor"  placeholder="Valor" ui-money-mask="2"> 
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn bnt-padrao">Salvar</button>
+	</form>
+
+	<br>
+
+	<table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped" show-filter="true">
+	    <tr ng-repeat="produto in $data">
+	        <td width="10%" title="'Código'" filter="{ codigo: 'number'}" sortable="'codigo'">
+	            {{produto.codigo}}</td>
+	        <td width="60%" title="'Nome'" filter="{ nome: 'text'}" sortable="'nome'">
+	            {{produto.nome}}</td>
+            <td width="22%" title="'Valor'" filter="{ valor: 'text'}" sortable="'valor'">
+	            {{produto.valor}}</td>
+
+	        <td width="8%" title="'Ações'">
+	        	<button class="btn btn-default btn-sm" title="Alterar" ng-click="vm.editar(produto)"><span class="glyphicon glyphicon-pencil"></span></button>
+          	
+          		<button class="btn btn-danger btn-sm" title="Excluir" data-toggle="modal"  data-target="#confirmar-exclusao-modal" ng-click="vm.excluir(produto)"><span class="glyphicon glyphicon-trash"></span></button>
+          	</td>
+	    </tr>
+	</table>
+
+</div>

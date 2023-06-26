@@ -1,0 +1,202 @@
+<div ng-controller="EmpresaController as vm">
+	<h1>Empresa</h1>
+
+	<form name="empresaForm" novalidate ng-submit="vm.salvar()">
+
+		<div class="row">
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="empresa-razao-social">(*)Razão Social</label>
+					<input autocomplete="off" ng-model="vm.empresa.razaoSocial" class="form-control " 
+					type="text" name="razaoSocial" id="empresa-razao-social" placeholder="Razão Social" required>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="empresa-nome-comercial">Nome Comercial</label>
+					<input autocomplete="off" ng-model="vm.empresa.nomeComercial" class="form-control" 
+					type="text" name="nomeComercial" id="empresa-nome-comercial" placeholder="Nome Comercial">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="empresa-cnpf-cpf">(*)CNPJ/CPF</label>
+					<input autocomplete="off" ng-model="vm.empresa.cnpjCpf" class="form-control" 
+					type="text" name="cnpjCpf" id="empresa-cnpf-cpf" placeholder="CNPJ/CPF" ui-br-cpfcnpj-mask required>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="empresa-inscricao-estadual">Inscrição Estadual</label>
+					<input autocomplete="off" ng-model="vm.empresa.inscricaoEstadual" class="form-control" 
+					type="text" name="inscricaoEstadual" id="empresa-inscricao-estadual"  placeholder="Inscrição Estadual">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="empresa-cep">(*)CEP</label>
+					<input autocomplete="off" ng-model="vm.endereco.cep" class="form-control" 
+					type="text" name="cep" id="empresa-cep"  placeholder="CEP" required ui-br-cep-mask>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="empresa-rua">(*)Rua</label>
+					<input autocomplete="off" ng-model="vm.endereco.logradouro" class="form-control" 
+					type="text" name="rua" id="empresa-rua" placeholder="Rua" required>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="empresa-numero">(*)Número</label>
+					<input autocomplete="off" ng-model="vm.endereco.numero" class="form-control" 
+					type="text" name="numero" id="empresa-numero" placeholder="Número" required>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="empresa-complemento">Complemento</label>
+					<input autocomplete="off" ng-model="vm.endereco.complemento" class="form-control" 
+					type="text" name="complemento" id="empresa-complemento" placeholder="Complemento">
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="empresa-bairro">(*)Bairro</label>
+					<input autocomplete="off" ng-model="vm.endereco.bairro" class="form-control" 
+					type="text" name="bairro" id="empresa-bairro" placeholder="Bairro" required>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-1">
+				<div class="form-group">
+					<label for="empresa-uf"(*)>UF</label>
+					<select class="form-control" ng-model="vm.endereco.uf" name="uf" required
+					ng-options="uf as uf for uf in vm.ufs">
+						<option value="">UFs</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-md-5">
+				<div class="form-group">
+					<label for="empresa-cidade">(*)Cidade</label>
+					<input autocomplete="off" ng-model="vm.endereco.localidade" class="form-control" 
+					type="text" name="cidade" id="empresa-cidade" placeholder="Cidade" required>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="empresa-telefone">Telefone</label>
+					<input autocomplete="off" ng-model="vm.telefone.telefone" class="form-control" 
+					type="text" name="telefone" id="empresa-telefone" placeholder="Telefone"
+					ui-br-phone-number>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="empresa-celular">Celular</label>
+					<input autocomplete="off" ng-model="vm.telefone.celular" class="form-control" 
+					type="text" name="celular" id="empresa-celular" placeholder="Celular"
+					ui-br-phone-number>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="empresa-telefone-adicional">Telefone Adicional</label>
+					<input autocomplete="off" ng-model="vm.telefone.telefoneAdicional" class="form-control" 
+					type="text" name="telefoneAdicional" id="empresa-telefone-adicional" placeholder="Telefone Adicional" ui-br-phone-number>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="empresa-juros-mura">Juros de Mora</label>
+					<input autocomplete="off" ng-model="vm.empresa.jurosMora" class="form-control" 
+					ui-percentage-mask type="text" name="jurosMora" id="empresa-juros-mura" placeholder="Juros de Mora">
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="empresa-valor-multa">Valor da Multa</label>
+					<input autocomplete="off" ng-model="vm.empresa.valorMulta" class="form-control" ui-money-mask="2"
+					type="text" name="valorMulta" id="empresa-valor-multa" placeholder="Valor da Multa">
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="empresa-instrucao-cobranca">Instrução de Cobrança</label>
+					<input autocomplete="off" ng-model="vm.empresa.instrucaoCobranca" class="form-control" 
+					type="text" name="instrucaoCobranca" id="empresa-instrucao-cobranca" placeholder="Instrução de Cobrança">
+				</div>
+			</div>
+
+		</div>
+		
+		<h3>Configuração de envio de E-mails de cobrança</h3>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="empresa-emailboleto-titulo">Título do E-mail</label>
+					<input ng-model="vm.empresa.emailCobranca.titulo" class="form-control" 
+					type="text" name="jurosMora" id="empresa-emailboleto-titulo" placeholder="Título do E-mail">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="empresa-emailboleto-corpo">Corpo do E-mail</label>
+					<textarea  ng-model="vm.empresa.emailCobranca.corpo" class="form-control" 
+					type="text" rows="8" name="jurosMora" id="empresa-emailboleto-corpo" placeholder="Corpo do E-mail"></textarea>
+				</div>
+			</div>
+		</div>
+		
+		<button type="submit" class="btn bnt-padrao">Salvar</button>
+
+		<h3>Reajuste de mensalidade</h3>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<div class="input-group">	
+						<input autocomplete="off" ng-model="vm.empresa.reajusteMensalidade" class="form-control" 
+						ui-percentage-mask type="text" name="reajusteMensalidade" id="empresa-reajuste-porcentagem" placeholder="Percentual de reajuste de mensalidade">
+						<span class="input-group-btn" >
+							<button class="btn bnt-padrao" type="button" ng-click="vm.reajustar()">Aplicar</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
